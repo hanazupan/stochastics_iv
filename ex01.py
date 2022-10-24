@@ -62,7 +62,7 @@ def trajectory_histograms(length=5000, how_many=100):
     bin_num = 30
     all_histos = np.zeros((bin_num, length))
     for i in range(length):
-        histo, bins = np.histogram(all_traj[:, i], bins=bin_num, range=[-3, 3])
+        histo, bins = np.histogram(all_traj[:, i], bins=bin_num, range=[-3, 3], density=True)
         all_histos[:, i] = histo
     return all_histos, bins
 
@@ -89,5 +89,5 @@ def plot_histogram_in_time(H, bins):
 if __name__ == "__main__":
     # plot_gaussian_in_time()
     # plot_trajectory()
-    H, bins = trajectory_histograms()
+    H, bins = trajectory_histograms(1000, 50)
     plot_histogram_in_time(H, bins)
